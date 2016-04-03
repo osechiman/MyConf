@@ -180,7 +180,8 @@ set nobackup
 set noswapfile
 " undoファイルを作成しない
 set noundofile
-
+" 末尾の空白は自動で削除
+autocmd BufWritePre * :%s/\s\+$//ge
 "---------------------------------------------------------------------------
 " ファイル名に大文字小文字の区別がないシステム用の設定:
 "   (例: DOS/Windows/MacOS)
@@ -275,14 +276,14 @@ call dein#begin(expand($DEIN_VIM_PLUGIN_HOME))
       " 構文の最小値を設定
       let g:neocomplete#sources#syntax#min_keyword_length = 2
       let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-      
+
       " 辞書ファイルの設定
       let g:neocomplete#sources#dictionary#dictionaries = {
         \ 'default' : '',
         \ 'vimshell' : $HOME.'/.vimshell_hist',
         \ 'scheme' : $HOME.'/.gosh_completions'
         \ }
-      
+
       " keywordの設定
       if !exists('g:neocomplete#keyword_patterns')
           let g:neocomplete#keyword_patterns = {}
@@ -291,15 +292,15 @@ call dein#begin(expand($DEIN_VIM_PLUGIN_HOME))
       " Plugin key-mappings
       " 補完機能で表示されているリストを一度リセットする時のkeymap
       inoremap <expr><C-g> neocomplete#undo_completion()
-  
-      " omni補完設定 
+
+      " omni補完設定
       autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
       autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
       autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
       autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
       autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
       autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
-  
+
     " neocompleteが読み込まれた際に読み込む
     call dein#add('Shougo/neosnippet', {
       \ 'on_sorce' : ['neocomplete'],
@@ -327,7 +328,7 @@ call dein#begin(expand($DEIN_VIM_PLUGIN_HOME))
       if has('conceal')
         set conceallevel=2 concealcursor=niv
       endif
-  
+
       " Neosnippetで標準以外の辞書も使うときの設定
       let g:neosnippet#snippets_directory = $DEIN_VIM_PLUGIN_HOME . 'repos/github.com/Shougo/neosnippet-snippets/neosnippets/'
 
