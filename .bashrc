@@ -202,3 +202,7 @@ export PS1="[\[\033[0;32m\]\u@\h \W\[\033[0m\]]$ "
 
 # Cygwinのコンソールカラー設定
 export COLOR_THEME_DIR="$HOME/color"
+
+# dein.vim系のパス設定
+export DEIN_VIM_HOME="$HOME/.vim/repos/github.com/Shougo/dein.vim"
+export DEIN_VIM_PLUGIN_HOME="$HOME/.vim/"
