@@ -130,7 +130,7 @@ set smartcase
 " 編集に関する設定:
 "
 " タブの画面上での幅
-set tabstop=8
+set tabstop=4
 " タブをスペースに展開しない (expandtab:展開する)
 set noexpandtab
 " 自動的にインデントする (noautoindent:インデントしない)
@@ -188,6 +188,9 @@ augroup HighlightTrailingSpaces
   autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
   autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
+
+" .mdファイルはmarkdownファイルとして認識させる
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "---------------------------------------------------------------------------
 " ファイル名に大文字小文字の区別がないシステム用の設定:
@@ -256,92 +259,116 @@ endif
 " dein.vimの本体があるパス
 set runtimepath^=$DEIN_VIM_HOME
 
-" plugin格納ディレクトリ設定
-call dein#begin(expand($DEIN_VIM_PLUGIN_HOME))
+if dein#load_state($DEIN_VIM_PLUGIN_HOME)
+  " plugin格納ディレクトリ設定
+  call dein#begin(expand($DEIN_VIM_PLUGIN_HOME))
 
-  " dein.vimの本体を最初に読み込む
-  call dein#add($DEIN_VIM_HOME)
+    " dein.vimの本体を最初に読み込む
+    call dein#add($DEIN_VIM_HOME)
 
-  " vim:helpの日本語化
-  call dein#add('vim-jp/vimdoc-ja')
+    " vim:helpの日本語化
+    call dein#add('vim-jp/vimdoc-ja')
 
-  " snippets系の設定
-  " luaがcygwin環境に入っていないと動かないのでエラーが出る場合はapt-cyg使ってinstallしてみる
-  if has('lua')
-    call dein#add('Shougo/neocomplete', {
-      \ 'on_i' : 1,
-      \ 'lazy' : 1
-      \ })
-      "---------------------------------------------------------------------------
-      " necompleteの設定
-      " AutoComplPopを無効にする
-      let g:acp_enableAtStartup = 0
-      " neocomplete起動時に有効にする
-      let g:neocomplete#enable_at_startup = 1
-      " smartcaseを使う
-      let g:neocomplete#enable_smart_case = 1
-      " 構文の最小値を設定
-      let g:neocomplete#sources#syntax#min_keyword_length = 2
-      let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+    " snippets系の設定
+    " luaがcygwin環境に入っていないと動かないのでエラーが出る場合はapt-cyg使ってinstallしてみる
+    if has('lua')
+      call dein#add('Shougo/neocomplete', {
+        \ 'on_i' : 1,
+        \ 'lazy' : 1
+        \ })
+        "---------------------------------------------------------------------------
+        " necompleteの設定
+        " AutoComplPopを無効にする
+        let g:acp_enableAtStartup = 0
+        " neocomplete起動時に有効にする
+        let g:neocomplete#enable_at_startup = 1
+        " smartcaseを使う
+        let g:neocomplete#enable_smart_case = 1
+        " 構文の最小値を設定
+        let g:neocomplete#sources#syntax#min_keyword_length = 2
+        let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-      " 辞書ファイルの設定
-      let g:neocomplete#sources#dictionary#dictionaries = {
-        \ 'default' : '',
-        \ 'vimshell' : $HOME.'/.vimshell_hist',
-        \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+        " 辞書ファイルの設定
+        let g:neocomplete#sources#dictionary#dictionaries = {
+          \ 'default' : '',
+          \ 'vimshell' : $HOME.'/.vimshell_hist',
+          \ 'scheme' : $HOME.'/.gosh_completions'
+          \ }
 
-      " keywordの設定
-      if !exists('g:neocomplete#keyword_patterns')
-          let g:neocomplete#keyword_patterns = {}
-      endif
-      let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-      " Plugin key-mappings
-      " 補完機能で表示されているリストを一度リセットする時のkeymap
-      inoremap <expr><C-g> neocomplete#undo_completion()
+        " keywordの設定
+        if !exists('g:neocomplete#keyword_patterns')
+            let g:neocomplete#keyword_patterns = {}
+        endif
+        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+        " Plugin key-mappings
+        " 補完機能で表示されているリストを一度リセットする時のkeymap
+        inoremap <expr><C-g> neocomplete#undo_completion()
 
-      " omni補完設定
-      autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-      autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-      autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-      autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-      autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-      autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
+        " omni補完設定
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        autocmd FileType php setlocal omnifunc=phpcomplete#CompleteTags
 
-    " neocompleteが読み込まれた際に読み込む
-    call dein#add('Shougo/neosnippet', {
-      \ 'on_sorce' : ['neocomplete'],
-      \ 'lazy' : 1
-      \ })
-    call dein#add('Shougo/neosnippet-snippets', {
-      \ 'on_sorce' : ['neocomplete'],
-      \ 'lazy' : 1
-      \ })
+      " neocompleteが読み込まれた際に読み込む
+      call dein#add('Shougo/neosnippet', {
+        \ 'on_source' : ['neocomplete'],
+        \ 'lazy' : 1
+        \ })
+      call dein#add('Shougo/neosnippet-snippets', {
+        \ 'on_source' : ['neocomplete'],
+        \ 'lazy' : 1
+        \ })
 
-      "---------------------------------------------------------------------------
-      " snippets系の設定
-      " Plugin key-mappings.
-      " 補完候補の上で以下のkey-mapをすると反映される
-      imap <C-k> <Plug>(neosnippet_expand_or_jump)
-      smap <C-k> <Plug>(neosnippet_expand_or_jump)
-      xmap <C-k> <Plug>(neosnippet_expand_target)
+        "---------------------------------------------------------------------------
+        " snippets系の設定
+        " Plugin key-mappings.
+        " 補完候補の上で以下のkey-mapをすると反映される
+        imap <C-k> <Plug>(neosnippet_expand_or_jump)
+        smap <C-k> <Plug>(neosnippet_expand_or_jump)
+        xmap <C-k> <Plug>(neosnippet_expand_target)
 
-      " スニペット展開が可能なら展開、通常補完なら補完確定、それ以外は改行
-      imap <expr><CR> neosnippet#expandable() ?
-        \ '<Plug>(neosnippet_expand_or_jump)' : pumvisible() ?
-        \ '<C-y>'. neocomplete#smart_close_popup() : '<CR>'
+        " スニペット展開が可能なら展開、通常補完なら補完確定、それ以外は改行
+        imap <expr><CR> neosnippet#expandable() ?
+          \ '<Plug>(neosnippet_expand_or_jump)' : pumvisible() ?
+          \ '<C-y>'. neocomplete#smart_close_popup() : '<CR>'
 
-      " For conceal markers.
-      if has('conceal')
-        set conceallevel=2 concealcursor=niv
-      endif
+        " For conceal markers.
+        if has('conceal')
+          set conceallevel=2 concealcursor=niv
+        endif
 
-      " Neosnippetで標準以外の辞書も使うときの設定
-      let g:neosnippet#snippets_directory = $DEIN_VIM_PLUGIN_HOME . 'repos/github.com/Shougo/neosnippet-snippets/neosnippets/'
+        " Neosnippetで標準以外の辞書も使うときの設定
+        let g:neosnippet#snippets_directory = $DEIN_VIM_PLUGIN_HOME. '/repos/github.com/fatih/vim-go/gosnippets/snippets/go.snip'
 
-  endif
+    endif
 
-call dein#end()
+  " markdownをいい感じに編集できるやつ
+  call dein#add('plasticboy/vim-markdown', {
+    \ 'on_ft' : 'markdown',
+    \ 'lazy' : 1})
+  " vimからファイルをブラウザで見れるようにする
+  call dein#add('kannokanno/previm', {
+    \ 'on_source' : ['vim-markdown'],
+    \ 'lazy' : 1
+    \ })
+  call dein#add('tyru/open-browser.vim', {
+    \ 'on_source' : ['vim-markdown'],
+    \ 'lazy' : 1
+    \ })
+
+
+  " Go言語を触るときはvim-goを読み込む
+  call dein#add('fatih/vim-go', {
+    \ 'on_ft' : 'go',
+    \ 'lazy' : 1
+    \ })
+
+  call dein#end()
+  call dein#save_state()
+endif
 
 " installがまだのものがあればinstallさせる
 if dein#check_install()
