@@ -182,6 +182,13 @@ set noswapfile
 set noundofile
 " 末尾の空白は自動で削除
 autocmd BufWritePre * :%s/\s\+$//ge
+" 末尾の空白はハイライトする
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
+
 "---------------------------------------------------------------------------
 " ファイル名に大文字小文字の区別がないシステム用の設定:
 "   (例: DOS/Windows/MacOS)
