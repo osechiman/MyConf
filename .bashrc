@@ -114,6 +114,18 @@
  alias la='ls -A'                              # all but . and ..
  alias l='ls -CF'                              #
 
+# cygwin用のsudo作成
+ alias sudo='cygstart --action=runas'
+
+# node関係をcygwinで使えるようにする設定
+ alias nodist='nodist.cmd'
+ alias npm='npm.cmd'
+
+# treeに自分好みのoptionを付ける
+ alias tree='tree -C --dirsfirst'
+# treeでHTMLを出力する ex.) htree '#SiteMap' > sitemap.html
+ alias htree='tree -H'
+
 # Google App Engine alias's
 # # SDKのROOTパスを設定
 # export GAE_SDK_ROOT='/usr/local/bin/win_go_appengine'

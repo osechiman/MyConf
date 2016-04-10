@@ -189,7 +189,7 @@ augroup HighlightTrailingSpaces
   autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
 
-" .mdファイルはmarkdownファイルとして認識させる
+" .mdファイルはmarkdownファイルとして認識
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 "---------------------------------------------------------------------------

@@ -21,3 +21,4 @@ BoldAsFont=yes
 FontHeight=12
 FontSmoothing=full
 Font=Consolas
+CtrlShiftShortcuts=yes
