@@ -269,6 +269,8 @@ if dein#load_state($DEIN_VIM_PLUGIN_HOME)
     " vim:helpの日本語化
     call dein#add('vim-jp/vimdoc-ja')
 
+    call dein#add('Shougo/unite.vim')
+
     " snippets系の設定
     " luaがcygwin環境に入っていないと動かないのでエラーが出る場合はapt-cyg使ってinstallしてみる
     if has('lua')
