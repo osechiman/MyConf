@@ -249,6 +249,9 @@ set clipboard=unnamed,autoselect
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
+" escのキーバインド変更
+imap <C-c> <esc>
+
 " いちいちset tagsするのは面倒なのでここで設定
 set tags=./tags;
 
@@ -276,6 +279,7 @@ if dein#load_state($DEIN_VIM_PLUGIN_HOME)
     " vim:helpの日本語化
     call dein#add('vim-jp/vimdoc-ja')
 
+    " unite.vimの読み込み
     call dein#add('Shougo/unite.vim')
 
     " snippets系の設定
