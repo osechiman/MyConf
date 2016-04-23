@@ -245,6 +245,13 @@ set formatexpr=autofmt#japanese#formatexpr()
 " clipbordを有効にする
 set clipboard=unnamed,autoselect
 
+" tagを使うときの時のキーバインド設定
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <leader><C-\> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" いちいちset tagsするのは面倒なのでここで設定
+set tags=./tags;
+
 "---------------------------------------------------------------------------
 " dein.vimの設定
 if &compatible

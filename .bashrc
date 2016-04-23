@@ -126,13 +126,6 @@
 # treeでHTMLを出力する ex.) htree '#SiteMap' > sitemap.html
  alias htree='tree -H'
 
-# Google App Engine alias's
-# # SDKのROOTパスを設定
-# export GAE_SDK_ROOT='/usr/local/bin/win_go_appengine'
-# alias goapp="$GAE_SDK_ROOT/goapp.bat"
-# alias godoc="$GAE_SDK_ROOT/godoc.bat"
-# alias gofmt="$GAE_SDK_ROOT/gofmt.bat"
-
 # Umask
 #
 # /etc/profile sets 022, removing write perms to group + others.
