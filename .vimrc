@@ -255,6 +255,9 @@ imap <C-c> <esc>
 " いちいちset tagsするのは面倒なのでここで設定
 set tags=./tags;
 
+" viminfoは作成しない
+set viminfo=
+
 "---------------------------------------------------------------------------
 " dein.vimの設定
 if &compatible
