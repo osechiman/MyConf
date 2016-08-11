@@ -2,7 +2,6 @@
 export CHARSET=UTF-8
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export PAGER=less
-export PS1='[\[\033[1;32m\]\u@\h \W\[\033[0m\]]$ '
 umask 022
 
 for script in /etc/profile.d/*.sh ; do
@@ -10,6 +9,8 @@ for script in /etc/profile.d/*.sh ; do
 		. $script
 	fi
 done
+
+export PS1='[\[\033[1;32m\]\u@\h \W\[\033[0m\]]$ '
 
 # Interactive operation...
 alias rm='rm -i'
