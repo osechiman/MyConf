@@ -1,0 +1,38 @@
+# Default export
+export CHARSET=UTF-8
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/bin/go_appengine
+export PAGER=less
+umask 022
+
+for script in /etc/profile.d/*.sh ; do
+	if [ -r $script ] ; then
+		. $script
+	fi
+done
+
+export PS1='[\[\033[1;32m\]\u@\h \W\[\033[0m\]]$ '
+
+# Interactive operation...
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Default to human readable figures
+alias df='df -h'
+alias du='du -h'
+
+# Misc :)
+alias less='less -r'
+alias whence='type -a'
+alias grep='grep --color'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# Some shortcuts for different directory listings
+alias ls='ls -hF --color=tty'
+alias dir='ls --color=auto --format=vertical'
+alias vdir='ls --color=auto --format=long'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
+
