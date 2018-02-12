@@ -36,13 +36,38 @@ on_ft = ['md', 'markdown']
 repo = 'tyru/open-browser.vim'
 on_ft = ['md', 'markdown']
 
+#[[plugins]] # Golang
+#repo = 'fatih/vim-go'
+#on_ft  = 'go'
+
+[[plugins]] # Git
+repo = 'tpope/vim-fugitive'
+
+[[plugins]] # Power up status line
+repo = 'itchyny/lightline.vim'
+
+[[plugins]] # Filer
+repo = 'Shougo/vimfiler'
+
+[[plugins]] # Async vim command
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]] # Markdown
+repo = 'plasticboy/vim-markdown'
+on_ft = ['md', 'markdown']
+
+[[plugins]] # Markdown
+repo = 'kannokanno/previm'
+on_ft = ['md', 'markdown']
+
+[[plugins]] # Markdown
+repo = 'tyru/open-browser.vim'
+on_ft = ['md', 'markdown']
+
 [[plugins]] # Golang
 repo = 'fatih/vim-go'
 on_ft  = 'go'
-
-[[plugins]] # PHP Folding
-repo = 'everzet/phpfolding.vim'
-on_ft  = 'php'
 
 [[plugins]] # Git
 repo = 'tpope/vim-fugitive'
@@ -67,3 +92,10 @@ repo = 'scrooloose/syntastic'
 
 [[plugins]] # Analize coding time
 repo = 'wakatime/vim-wakatime'
+
+[[plugins]] # Kubernetes yaml lint
+repo = 'andrewstuart/vim-kubernetes'
+on_ft  = 'yaml'
+
+[[plugins]] # syntastic check
+repo = 'scrooloose/syntastic'
