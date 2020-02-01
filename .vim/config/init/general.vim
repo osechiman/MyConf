@@ -1,0 +1,47 @@
+scriptencoding utf-8
+syntax on
+
+set ai
+set autoindent
+set autoread
+set backspace=indent,eol,start
+set bs=2
+set clipboard=unnamed,unnamedplus
+set cmdheight=2
+set confirm
+set cursorbind
+set cursorline
+set encoding=utf-8
+set expandtab
+set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
+set fileformats=unix,dos,mac
+set helpheight=999
+set hidden
+set history=50
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set nobackup
+set nocompatible
+set noerrorbells
+set nomodeline
+set noswapfile
+set number
+set ruler
+set scrolloff=8
+set shellslash
+set shiftwidth=4
+set showmatch
+set sidescroll=1
+set sidescrolloff=16
+set smartcase
+set smartindent
+set softtabstop=4
+set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo
+set tabstop=4
+set tags+=.git/tags
+set visualbell t_vb=
+set whichwrap=b,s,h,l,<,>,[,]
+set wildmenu wildmode=list:longest,full
+set wrapscan

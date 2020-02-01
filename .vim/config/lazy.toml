@@ -8,3 +8,12 @@ on_ft = 'html'
 
 [[plugins]] # Toml
 repo  = 'cespare/vim-toml'
+
+[[plugins]] # deoplete
+repo  = 'Shougo/deoplete.nvim'
+
+[[plugins]] # deoplete
+repo  = 'roxma/nvim-yarp'
+
+[[plugins]] # deoplete
+repo  = 'roxma/vim-hug-neovim-rpc'
