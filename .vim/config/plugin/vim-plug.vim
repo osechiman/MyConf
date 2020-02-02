@@ -1,6 +1,7 @@
 "*****************************************************************************
 "" Vim-PLug core
 "*****************************************************************************
+let g:vimplugged = '~/.vim/plugged'
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
 if !filereadable(vimplug_exists)
@@ -17,9 +18,11 @@ if !filereadable(vimplug_exists)
 endif
 
 " Plugins will be downloaded under the specified directory.
-call plug#begin(expand('~/.vim/plugged'))
+call plug#begin(expand(vimplugged))
 
   runtime! config/plugin/vim-go.vim
   runtime! config/plugin/plantuml-syntax.vim
+  runtime! config/plugin/ultisnips.vim
+  runtime! config/plugin/YouCompleteMe.vim
 
 call plug#end()
