@@ -16,6 +16,5 @@ RUN curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscript
     gvm install go1.4 -B && \
     gvm use go1.4 && \
     export GOROOT_BOOTSTRAP=$GOROOT && \
-    gvm install go1.12 -B && \
     gvm install go1.13 -B && \
     gvm use go1.13 --default
