@@ -1,1 +1,0 @@
-Plug 'aklt/plantuml-syntax'
