@@ -24,5 +24,7 @@ call plug#begin(expand(vimplugged))
   runtime! config/plugin/ultisnips.vim
   runtime! config/plugin/YouCompleteMe.vim
   runtime! config/plugin/vim-colorschemes.vim
+  runtime! config/plugin/vim-airline.vim
+  runtime! config/plugin/vim-fugitive.vim
 
 call plug#end()
